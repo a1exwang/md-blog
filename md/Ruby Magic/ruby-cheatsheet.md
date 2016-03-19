@@ -23,12 +23,11 @@
         arr.select { |a| a > 3 }     #=> [4, 5, 6]
         arr.reject { |a| a < 3 }     #=> [3, 4, 5, 6]
 
-  - `<<`, `push`, `insert`
+  - `<<`, `push`, `insert`: <<是push的别名
 
         arr.insert(3, 'apple')  #=> [0, 1, 2, 'apple', 3, 4, 5, 6]
         arr.push('fuck')
         arr << 'fuck'
-        # <<是push的别名
 
   - `collect`, `map`
   - `inject`, `reduce`
