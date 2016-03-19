@@ -27,3 +27,11 @@
   - -anop | grep 1234, 列出占用1234端口的进程
 - 特殊变量
   - $? 上一个命令的返回值
+- 生成随机字符串
+  - head /dev/urandom | tr -dc A-Za-z0-9 | head -c10
+- sort
+  - -n 将每行当成数字排序,
+  - -h 将每行当成文件大小排序(e.g. 10K, 100M)
+  - e.g.
+    - `find . -type f -exec du -ah {} + | sort -h | tail -10`列出当前目录树下最大的几个文件
+    - `cat /var/log/nginx/access.log | cut –d " " -f 1 | sort| uniq | wc -l `列出服务器的独立访问IP
