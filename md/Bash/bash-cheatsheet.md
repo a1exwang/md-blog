@@ -22,3 +22,6 @@
 - tail
   - -n NUM
   - -f (update file content)
+
+- netstat
+  - -anop | grep 1234, 列出占用1234端口的进程
