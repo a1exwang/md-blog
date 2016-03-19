@@ -11,6 +11,7 @@
     1. markdown中图片能自动上传到blog服务器
   - 一键从github同步到blog服务器
   - 可扩展
+  - 安全
 
 1. 思路
   - wordpress提供blog服务
