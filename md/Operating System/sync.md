@@ -4,7 +4,7 @@
 
 ------
 
-1. OS同步原语
+- OS同步原语
   - mutex
     - 最大值为1的semaphore
   - semaphore
