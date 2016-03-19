@@ -15,7 +15,8 @@
 
 1. 思路
   - wordpress提供blog服务
-  - 用wordpress REST API创建/修改posts
+  - 用wordpress REST API创建/修改posts,
+    并且将REST client/server都放在blog服务器上, 禁止外部访问REST API
   - 用redcarpet做markdown到html的转换
     - 定制redcarpet, 在转换时修改url
   - 用wordpress钩子?/回调?钩住修改posts的动作, 将markdown同步到git上
