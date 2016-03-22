@@ -54,10 +54,10 @@
 
 - 伪代码(Ruby风格)
 
+
       def alpha_beta(depth, node, alpha, beta)
         return evaluate(node) if depth == 0
         node.expand_children
-
         # beta pruning
         if node is MAX
           node.children.each do |c|
