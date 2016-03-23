@@ -7,7 +7,7 @@
 - Legal
 
 ![Creative Commons License 3.0](CC.png "CC 3.0")
- 
+  
 - ls -al
 - pv (monitor the progress of data through a pipe)
   - -b(display bytes)
