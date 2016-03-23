@@ -44,3 +44,5 @@
   - -e trace=file, 仅监视参数中有文件位置的系统调用
 - stat查看文件属性
   - 可以显示文件的设备号
+- lsof (LiSt Open Files)列出打开的文件
+  - sudo lsof file_path, 列出打开了file_path文件的进程
