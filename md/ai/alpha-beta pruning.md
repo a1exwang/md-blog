@@ -54,24 +54,23 @@
 
 - 伪代码(Ruby风格)
 
-
-      def alpha_beta(depth, node, alpha, beta)
-        return evaluate(node) if depth == 0
-        node.expand_children
-        # beta pruning
-        if node is MAX
-          node.children.each do |c|
-            v = alpha_beta(depth-1, c, alpha, beta)
-            return alpha if v > beta
-            alpha = v if v > alpha
+        def alpha_beta(depth, node, alpha, beta)
+          return evaluate(node) if depth == 0
+          node.expand_children
+          # beta pruning
+          if node is MAX
+            node.children.each do |c|
+              v = alpha_beta(depth-1, c, alpha, beta)
+              return alpha if v > beta
+              alpha = v if v > alpha
+            end
+            return alpha
+          else
+            node.children.each do |c|
+              v = alpha_beta(depth-1, c, alpha, beta)
+              return beta if v < alpha
+              beta = v if v < beta
+            end
+            return beta
           end
-          return alpha
-        else
-          node.children.each do |c|
-            v = alpha_beta(depth-1, c, alpha, beta)
-            return beta if v < alpha
-            beta = v if v < beta
-          end
-          return beta
         end
-      end
