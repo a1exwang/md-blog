@@ -12,7 +12,7 @@
 - pv (monitor the progress of data through a pipe)
   - -b(display bytes)
   - -r(display rate)
-- Ctrl+Z (stop current task)
+- Ctrl+Z (stop current task) 
   - bg (switch task 1 to BackGround)
   - fg (switch task 1 to ForeGround)
   - kill %1 (kill task 1)
