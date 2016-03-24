@@ -1,5 +1,5 @@
 # Alpha-Beta Pruning from the Outside In
-
+ 
 - tags: ai, pruning, alpha-beta pruning, minimax, maximin
 
 ------
