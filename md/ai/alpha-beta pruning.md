@@ -7,6 +7,8 @@
 参考了[维基百科](https://en.wikipedia.org/wiki/Minimax?oldformat=true)
 
 ## 最大最小算法
+- 目的
+  - 在某种局面下, 有n种着子方法, 估算这n中着子方法的收益值, 选择收益最大的位置着子
 - 前提
   1. 两个玩家
   2. 信息对等
@@ -49,7 +51,8 @@
       3. 根据推论3, cu对v(p)无影响, 即去掉cu, v(p)不变
     - 剪枝操作
       - 当检测到满足假设中的条件时, 直接跳过所有c(k), k > j节点.
-
+    - 图例
+      - ![alphabeta](alphabeta.png)
   2. alpha剪枝: 类似
 
 - 伪代码(Ruby风格)
