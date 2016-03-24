@@ -52,7 +52,7 @@
     - 剪枝操作
       - 当检测到满足假设中的条件时, 直接跳过所有c(k), k > j节点.
     - 图例
-      - ![alphabeta](alpha-beta_prunning/Java.png "alphabeta")
+      - ![alphabeta](alpha-beta_pruning/Java.png "alphabeta")
   2. alpha剪枝: 类似
 
 - 伪代码(Ruby风格)
