@@ -1,5 +1,5 @@
 # Alpha-Beta Pruning from the Outside In
- 
+
 - tags: ai, pruning, alpha-beta pruning, minimax, maximin
 
 ------
@@ -52,11 +52,11 @@
     - 剪枝操作
       - 当检测到满足假设中的条件时, 直接跳过所有c(k), k > j节点.
     - 图例
-      - ![alphabeta](alphabeta.png "alphabeta")
+      - ![alphabeta](alpha-beta_prunning/alphabeta.png "alphabeta")
   2. alpha剪枝: 类似
 
 - 伪代码(Ruby风格)
-    
+
         def alpha_beta(depth, node, alpha, beta)
           return evaluate(node) if depth == 0
           node.expand_children
