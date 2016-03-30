@@ -12,9 +12,15 @@
   - build tool
 - racc
   - compiler generator
-- rack, sinatra, rails
-  - http server
+
+- HTTP server
+  - rack
+  - sinatra
+  - rails
 - activerecord
   - database model
 - jekyll
   - static site generator
+- Markdown
+  - [redcarpet](https://github.com/vmg/redcarpet): markdown to html
+  - [reverse_markdown](https://github.com/xijo/reverse_markdown): html to markdown
