@@ -69,6 +69,8 @@
   - netstat
     - -anop | grep 1234, 列出占用1234端口的进程
   - dig
+  - rsync -azP --exclude=.git . alexwang@166.111.227.241:/home/alexwang/llvm
+    - 快速将本地的项目同步到服务器, -a增量传输, -z压缩传输, -P打印过程
 - misc
   - 特殊变量
     - $? 上一个命令的返回值
