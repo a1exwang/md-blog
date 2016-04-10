@@ -64,7 +64,8 @@
       - `find . -type f -exec du -ah {} + | sort -h | tail -10`列出当前目录树下最大的几个文件
       - `cat /var/log/nginx/access.log | cut –d " " -f 1 | sort| uniq | wc -l `列出服务器的独立访问IP
   - grep -A -B -C 多显示几行
-
+  - echo xxx | iconv -f gb2312 -t utf8 转换编码格式
+  - md5sum 计算md5
 - network
   - netstat
     - -anop | grep 1234, 列出占用1234端口的进程
