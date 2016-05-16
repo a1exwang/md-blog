@@ -4,6 +4,112 @@
 
 ------
 
+- Ruby的几个坑
+  - #===, #== and #=~
+  - a === b 意思大概是b是a类的东西, 具体到每个类对#===的实现上
+    - Class#===(obj): obj.is_a?(self)
+    - Range#===(obj): obj.member?(self)
+    - Regexp#===(obj): self.match(obj)
+  - a =~ b的意思是正则表达式匹配
+    - Regexp#=~(str), 要求str必须是String, 否则抛出异常TypeError
+    - Object#=~(regexp), 如果regexp不是Regexp, 返回nil, 不抛出异常
+  - a == b的意思是判断相等
+    - Object#==(obj), 比较引用, 或者说比较self和obj的地址
+    - String#==(str), 如果str是String, 那么比较字符串内容, 字符串必须encoding相同且bytes相同
+    - Numeric#==(n), 如果n是数字, 那么转换成相同类型比较
+    - Array, Hash等容器(Queue例外) #==(a), 如果a是相同类型, 那么用==比较每一个元素
+  - case a; when b, 相当于b === a, 而且从上到下匹配, 只匹配一个
+  - 下面的实验内容证明了以上几点
+
+        $ ruby -v
+        # => ruby 2.3.1p112 (2016-04-26 revision 54768) \[x86_64-linux\]
+
+        1 === Integer
+        # => false, #===不可交换, 由于===这个函数的self是===前面的对象
+
+        Integer === 1
+        # => true
+
+        \[1\] === 1
+        # => false, Array类没有重载#===
+
+        (0..2) === 1
+        # => true
+
+        /abc/ === 'abc'
+        # => true
+
+        'abc' === /abc/
+        # => false
+
+        'abc' === 'abc'
+        # => true, Object#===也同时包含了a==b的情况
+
+        /123/ === /123/
+        # => false, 由于Regexp类重载了#===所以上一条在这里不适用
+
+        (1..2) === (1..2)
+        # => false, 同上
+
+        /abc/ =~ 'abc'
+        # => 0, 返回匹配的位置
+
+        'abc' =~ /abc/
+        # => 0, =~看似可"交换", 这只是Object#=~和Regexp#=~行为类似而已
+
+        1 =~ /1/
+        # => nil
+
+        /1/ =~ 1
+        # TypeError
+        # no implicit conversion of Fixnum into String
+        # 这里可以看到, 其实=~交换操作数之后行为发生了变化
+
+        1 == 1
+        # => true
+
+        a = Object.new; a == a.dup
+        # => false
+
+        a = 'abc'; a == a.dup
+        # => true
+
+        a = '123'.encode('utf-16')
+        b = '123'.encode('utf-16').force_encoding('utf-8')
+        \[a.bytes == b.bytes, a == b\]
+        # => \[true, false\]
+
+
+        a = \[1, 'a'\]; Marshal.restore(Marshal.dump(a)) == a
+        # => true
+
+        a = {a: 'b'}; Marshal.restore(Marshal.dump(a)) == a
+        # => true
+
+
+        case 1
+          when 1; 1
+          when Integer; Integer
+          else 'else'
+        end
+        # => 1
+
+        case 1
+          when Integer; Integer
+          when 1; 1
+          else 'else'
+        end
+        # => Integer
+
+        case Integer
+          when 1; 1
+          when Integer; Integer
+          else; 'else'
+        end
+        # => else
+
+
+
 - `Array` Class
   - `new`, 创建指定个数元素的数组
     - `Array.new(4) { |x| i*i }  # => [1, 4, 9, 16]`

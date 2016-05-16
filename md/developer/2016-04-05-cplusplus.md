@@ -14,5 +14,5 @@
         targetLowering(new AlexTargetLowering(tm, this))
     ```
 
-  其中AlexTargetLowering的构造函数中使用了AlexSubtarget的getRegisterInfo(),
+    其中AlexTargetLowering的构造函数中使用了AlexSubtarget的getRegisterInfo(),
   获取了registerInfo对象, 但是此时registerInfo还没初始化
